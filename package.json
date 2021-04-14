@@ -10,21 +10,24 @@
     "index.js",
     "cli.js"
   ],
+  "engines": {
+    "node": ">=12"
+  },
   "dependencies": {
     "mkdirp": "^1.0.4",
-    "ncp": "2.0.0"
+    "ncp": "^2.0.0"
   },
   "devDependencies": {
     "es2015-deferred": "^3.0.0",
     "eslint": "^7.24.0",
     "eslint-config-qubyte": "^4.1.0",
     "mocha": "^8.3.2",
-    "rimraf": "^3.0.2",
     "sandboxed-module": "^2.0.4",
     "sinon": "^10.0.0"
   },
   "scripts": {
-    "test": "mocha tests; rimraf test-copy-space",
+    "test": "mocha tests",
+    "posttest": "rm -rf test-copy-space",
     "lint": "eslint ."
   },
   "repository": "github:qubyte/vendor-copy",

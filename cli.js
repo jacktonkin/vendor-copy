@@ -20,10 +20,10 @@ function logError(error) {
   process.exit(1);
 }
 
-let toCopy = pkg.vendorCopy || [];
+const toCopy = pkg.vendorCopy;
 
 if (!isProduction) {
-  toCopy = toCopy.concat(pkg.devVendorCopy || []);
+  toCopy.push(...(pkg.devVendorCopy || []));
 }
 
 vendorCopy(root, toCopy).then(logDone, logError);
