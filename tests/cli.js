@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const assert = require('assert');
+const assert = require('assert').strict;
 const SandboxedModule = require('sandboxed-module');
 const sinon = require('sinon');
 const Deferred = require('es2015-deferred');

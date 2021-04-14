@@ -10,9 +10,9 @@ const pkg = require(path.join(root, 'package.json'));
 const isProduction = process.env.npm_config_production === 'true' || process.env.NODE_ENV === 'production';
 
 function logDone(items) {
-  items.forEach(item => {
-    console.log(`${item.from} => ${item.to}`); // eslint-disable-line no-console
-  });
+  for (const { from, to } of items) {
+    console.log(`${from} => ${to}`); // eslint-disable-line no-console
+  }
 }
 
 function logError(error) {
