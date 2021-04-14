@@ -1,32 +1,30 @@
 'use strict';
 
 const path = require('path');
-const mkdirp = require('mkdirp');
-const ncp = require('ncp');
+const fs = require('fs').promises;
+const util = require('util');
+const ncp = util.promisify(require('ncp'));
 
-function ensureDir(fromTo) {
+async function ensureDir(fromTo) {
   const toPath = path.dirname(fromTo.to);
 
-  return new Promise((resolve, reject) => {
-    mkdirp(toPath, null, err => err ? reject(err) : resolve());
-  });
+  await fs.mkdir(toPath, { recursive: true });
 }
 
-function copyFile(fromTo) {
-  return new Promise((resolve, reject) => {
-    ncp(fromTo.from, fromTo.to, { dereference: true }, err => err ? reject(err) : resolve());
-  });
+async function copyFile(fromTo) {
+  await ncp(fromTo.from, fromTo.to, { dereference: true });
 }
 
-function ensureDirAndCopy(root, relativeFromTo) {
+async function ensureDirAndCopy(root, relativeFromTo) {
   const fromTo = {
     from: path.join(root, relativeFromTo.from),
     to: path.join(root, relativeFromTo.to)
   };
 
-  return ensureDir(fromTo)
-    .then(() => copyFile(fromTo))
-    .then(() => fromTo);
+  await ensureDir(fromTo);
+  await copyFile(fromTo);
+
+  return fromTo;
 }
 
 module.exports = function (root, copyItems) {

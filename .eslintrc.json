@@ -1,6 +1,6 @@
 {
-    "env": {
-        "node": true
-    },
-    "extends": "qubyte/ES2015"
+  "env": {
+    "node": true
+  },
+  "extends": "qubyte/ES2018"
 }

@@ -7,7 +7,7 @@ const sinon = require('sinon');
 const Deferred = require('es2015-deferred');
 
 describe('cli', () => {
-  const sandbox = sinon.sandbox.create();
+  const sandbox = sinon.createSandbox();
   const vendorCopyStub = sandbox.stub();
   const infoStub = sandbox.stub();
   const errorStub = sandbox.stub();
