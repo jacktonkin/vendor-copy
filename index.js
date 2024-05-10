@@ -3,7 +3,6 @@
 const path = require('path');
 const fs = require('fs').promises;
 const util = require('util');
-const ncp = util.promisify(require('ncp'));
 
 async function ensureDir(fromTo) {
   const toPath = path.dirname(fromTo.to);
@@ -12,7 +11,7 @@ async function ensureDir(fromTo) {
 }
 
 async function copyFile(fromTo) {
-  await ncp(fromTo.from, fromTo.to, { dereference: true });
+  await fs.cp(fromTo.from, fromTo.to, { dereference: true, recursive: true });
 }
 
 async function ensureDirAndCopy(root, relativeFromTo) {
