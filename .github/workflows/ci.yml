@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '12', '14' ]
+        node: [ '16', '18', '20', '22' ]
     steps:
     - name: checkout
       uses: actions/checkout@main
@@ -26,9 +26,9 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@main
-    - name: use node 14
+    - name: use node 22
       uses: actions/setup-node@v2
       with:
-        node-version: 14.x
+        node-version: 22.x
     - run: npm ci
     - run: npm run lint

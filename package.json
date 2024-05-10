@@ -11,7 +11,7 @@
     "cli.js"
   ],
   "engines": {
-    "node": ">=12"
+    "node": ">=16.7"
   },
   "devDependencies": {
     "es2015-deferred": "^3.0.0",
