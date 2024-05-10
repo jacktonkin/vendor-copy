@@ -13,9 +13,6 @@
   "engines": {
     "node": ">=12"
   },
-  "dependencies": {
-    "ncp": "^2.0.0"
-  },
   "devDependencies": {
     "es2015-deferred": "^3.0.0",
     "eslint": "^7.24.0",
