@@ -2,7 +2,6 @@
 
 const path = require('path');
 const fs = require('fs').promises;
-const util = require('util');
 
 async function ensureDir(fromTo) {
   const toPath = path.dirname(fromTo.to);
